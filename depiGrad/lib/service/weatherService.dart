@@ -1,10 +1,10 @@
 
 import '../model/current_weather_data.dart';
-import '../api/fiveDaysData.dart';
 import '../api/apiRepo.dart';
+import '../model/five_days_data.dart';
 
 class WeatherService{
-  String city;
+  String ? city;
   WeatherService({this.city});
 
   String baseUrl = 'https://api.openweathermap.org/data/2.5';
@@ -12,38 +12,38 @@ class WeatherService{
 
 
   void getCurrentWeatherData({
-    Function() beforSend,
+    Function() ?beforSend,
     Function(CurrentWeatherData currentWeatherData)? onSuccess,
-    Function(dynamic error) onError,
+    Function(dynamic error) ?onError,
   }) {
     final url = '$baseUrl/weather?q=$city&$apiKey';
 
-    ApiRepo(url: url, payload: null).getdata(
-        beforeSend: () => beforSend(),
-    onSuccess: (data) => onSuccess(CurrentWeatherData.fromJson(data)),
-    onError: (error)  => onError(error),
+    ApiRepo(url: url, payload: null).getData(
+        beforeSend: () => beforSend!(),
+    onSuccess: (data) => onSuccess!(CurrentWeatherData.fromJson(data)),
+    onError: (error)  => onError!(error),
     );
   }
 
 
   void getFiveDaysThreeHoursForcastData({
 
-    Function() beforSend,
-    Function(List<FiveDayData> fiveDayData) onSuccess,
-    Function(dynamic error) onError,
+    Function()? beforSend,
+    Function(List<FiveDaysData> fiveDayData)? onSuccess,
+    Function(dynamic error)? onError,
   }) {
     final url = '$baseUrl/forecast?q=$city&lang=en&$apiKey';
 print(url);
     ApiRepo(url: '$url', payload: null).getData(
-      beforeSend: () => beforSend(),
+      beforeSend: () => beforSend!(),
       onSuccess: (data) => {
-        onSuccess((data['list'] as List)
-      ?.map((t) => FiveDayData.fromJson(t))
+        onSuccess!((data['list'] as List)
+      ?.map((t) => FiveDaysData.fromJson(t))
        ?.toList()??
       List.empty()),
       },
       onError: (error)  => {
-              onError(error),
+              onError!(error),
             });
   }
 
