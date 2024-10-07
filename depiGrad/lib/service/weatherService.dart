@@ -1,4 +1,3 @@
-
 import '../model/current_weather_data.dart';
 import '../api/apiRepo.dart';
 import '../model/five_days_data.dart';
@@ -9,7 +8,6 @@ class WeatherService{
 
   String baseUrl = 'https://api.openweathermap.org/data/2.5';
   String apiKey = 'appid=e6324cd99bd6387f7b0c69bc4ac65a61';
-
 
   void getCurrentWeatherData({
     Function() ?beforSend,
@@ -24,7 +22,6 @@ class WeatherService{
     onError: (error)  => onError!(error),
     );
   }
-
 
   void getFiveDaysThreeHoursForcastData({
 
@@ -46,6 +43,4 @@ print(url);
               onError!(error),
             });
   }
-
-
 }
