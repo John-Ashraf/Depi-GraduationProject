@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:intl/intl.dart';
-import 'package:lottie/lottie.dart';
 import '../../controller/HomeController.dart';
 import '../../widget/MyCard.dart';
 import '../../widget/MyChart.dart';
 import '../../widget/MyList.dart';
-import 'package:weather_app/constants/images.dart';
-
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

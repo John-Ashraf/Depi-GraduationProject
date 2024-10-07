@@ -5,7 +5,7 @@ import '../service/weatherService.dart';
 
 class HomeController extends GetxController {
   String city;
-  HomeController( {required this.city});
+  HomeController({required this.city}) : assert(city != null);
   CurrentWeatherData currentWeatherData = CurrentWeatherData();
   List<FiveDaysData> fiveDayData = [];
   List<CurrentWeatherData> datalist = [];
@@ -29,8 +29,10 @@ class HomeController extends GetxController {
   void getCurrentWeatherData() {
     WeatherService(city: city).getCurrentWeatherData(
       onSuccess: (data) {
-        currentWeatherData = data;
-        update();
+        if (data != null) {
+          currentWeatherData = data;
+          update();
+        }
       },
       onError: (error) {
         print(error);
@@ -50,8 +52,10 @@ class HomeController extends GetxController {
     cities.forEach((element) {
       WeatherService(city: element).getFiveDaysThreeHoursForcastData(
         onSuccess: (data) {
-          datalist.add(data as CurrentWeatherData);
-          update();
+          if (data != null) {
+            datalist.add(data as CurrentWeatherData);
+            update();
+          }
         },
         onError: (error) {
           print(error);
@@ -64,8 +68,10 @@ class HomeController extends GetxController {
   void getFiveDaysData() {
     WeatherService(city: city).getFiveDaysThreeHoursForcastData(
       onSuccess: (data) {
-        fiveDayData = data;
-        update();
+        if (data != null) {
+          fiveDayData = data;
+          update();
+        }
       },
       onError: (error) {
         print(error);
