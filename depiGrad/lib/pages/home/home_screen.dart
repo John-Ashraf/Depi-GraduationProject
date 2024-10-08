@@ -4,68 +4,75 @@ import '../../controller/HomeController.dart';
 import '../../widget/MyCard.dart';
 import '../../widget/MyChart.dart';
 import '../../widget/MyList.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: GetBuilder<HomeController>(
-        builder: (controller) => Column(
-          children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: MyCard(),
-            ),
-            Expanded(
-              flex: 2,
-              child: Stack(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            'other city'.toUpperCase(),
+        builder: (controller) => SafeArea(
+          child: CustomScrollView(
+            slivers: <Widget>[
+              SliverToBoxAdapter(
+                child: MyCard(),
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      SizedBox(height: 20),
+                      Text(
+                        'OTHER CITY',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          fontSize: 16,
+                          fontFamily: 'flutterfonts',
+                          color: Colors.black45,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      MyList(),
+                    ],
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: SizedBox(height: 100), // Adjust this value to move the forecast section down
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'FORECAST NEXT 5 DAYS',
                             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              fontSize: 16,
-                              fontFamily: 'flutterfonts',
-                              color: Colors.black45,
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
+                              color: Colors.black45,
                             ),
                           ),
-                        ),
-                        MyList(),
-                        Container(
-                          padding: EdgeInsets.only(top: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                'Forecast next 5 days'.toUpperCase(),
-                                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black45,
-                                ),
-                              ),
-                              Icon(
-                                Icons.next_plan_outlined,
-                                color: Colors.black45,
-                              ),
-                            ],
+                          Icon(
+                            Icons.next_plan_outlined,
+                            color: Colors.black45,
                           ),
-                        ),
-                        MyChart(),
-                      ],
-                    ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      MyChart(),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
