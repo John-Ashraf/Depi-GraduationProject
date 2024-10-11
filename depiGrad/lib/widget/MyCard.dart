@@ -37,6 +37,9 @@ class MyCard extends GetView<HomeController> {
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: TextField(
               onChanged: (value) => controller.city = value,
+
+              onSubmitted:(value)=> controller.updateWeather(),
+              textInputAction:TextInputAction.search,
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.search, color: Colors.white),
@@ -46,6 +49,7 @@ class MyCard extends GetView<HomeController> {
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide(color: Colors.white),
                 ),
+
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide(color: Colors.white),
@@ -85,10 +89,10 @@ class MyCard extends GetView<HomeController> {
                                 children: <Widget>[
                                   Center(
                                     child: Text(
-                                      controller.currentWeatherData?.name ?? '',
+                                      (controller.currentWeatherData!=null)?'${controller.currentWeatherData.name}'.toUpperCase():"cairo",
                                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                         color: Colors.black45,
-                                        fontSize: 24,
+                                        fontSize: 15,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'flutterfonts',
                                       ),

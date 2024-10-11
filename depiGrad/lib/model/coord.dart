@@ -11,10 +11,5 @@ class Coord {
 
     return Coord(lon: json['lon'], lat: json['lat']);
   }
-  Map<String,dynamic>toJson(){
-    return{
-      "lon":this.lon,
-      "lat":this.lat
-    };
-  }
+
 }

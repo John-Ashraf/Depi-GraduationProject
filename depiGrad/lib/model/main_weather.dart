@@ -29,14 +29,4 @@ class MainWeather {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      "temp": this.temp,
-      "feelsLike": this.feelsLike,
-      "tempMin": this.tempMin,
-      "tempMax": this.tempMax,
-      "pressure": this.pressure,
-      "humidity": this.humidity,
-    };
-  }
 }

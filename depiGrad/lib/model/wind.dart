@@ -16,9 +16,8 @@ class Wind {
 
   factory Wind.fromJson(Map<String, dynamic> json) {
     return Wind(
-      speed: double.parse(json["speed"]),
-      deg: int.parse(json["deg"]),
-      gust: double.parse(json["gust"]),
+      speed: double.parse(json["speed"].toString()),
+      deg: json["deg"],
     );
   }
 //

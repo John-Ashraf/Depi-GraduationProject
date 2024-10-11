@@ -18,10 +18,5 @@ class FiveDaysData {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      "dateTime": this.dateTime,
-      "temp": this.temp,
-    };
-  }
+
 }

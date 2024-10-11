@@ -19,12 +19,4 @@ class Weather {
   }
 
 
-  Map<String, dynamic> toJson() {
-    return {
-      "id": this.id,
-      "main": this.main,
-      "description": this.description,
-      "icon": this.icon,
-    };
-  }
 }
