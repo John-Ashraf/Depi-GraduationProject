@@ -89,10 +89,10 @@ class MyCard extends GetView<HomeController> {
                                 children: <Widget>[
                                   Center(
                                     child: Text(
-                                      (controller.currentWeatherData!=null)?'${controller.currentWeatherData.name}'.toUpperCase():"cairo",
+                                      (controller.currentWeatherData!=null)?'${controller.currentWeatherData.name}'.toUpperCase():"assiut",
                                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                         color: Colors.black45,
-                                        fontSize: 15,
+                                        fontSize: 25,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'flutterfonts',
                                       ),
@@ -153,7 +153,7 @@ class MyCard extends GetView<HomeController> {
                                     children: <Widget>[
                                       SizedBox(
                                         width: 100,
-                                        height: 100,
+                                        height: 80,
                                         child: LottieBuilder.asset('assets/anims/cloudy.json'),
                                       ),
                                       Container(

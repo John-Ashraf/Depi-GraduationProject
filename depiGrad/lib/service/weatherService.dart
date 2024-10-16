@@ -3,7 +3,7 @@ import '../api/apiRepo.dart';
 import '../model/five_days_data.dart';
 
 class WeatherService{
-  String city="Cairo";
+  String city="assiut";
   WeatherService({required this.city});
 
   String baseUrl = 'https://api.openweathermap.org/data/2.5';
@@ -37,7 +37,7 @@ print(url);
       onSuccess: (data) => {
         onSuccess!((data['list'] as List)
       ?.map((t) => FiveDaysData.fromJson(t))
-       ?.toList()??
+            ?.toList()??
       List.empty()),
       },
       onError: (error)  => {

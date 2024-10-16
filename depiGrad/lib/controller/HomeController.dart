@@ -6,7 +6,7 @@ import '../service/GPSService.dart';
 import '../service/weatherService.dart';
 
 class HomeController extends GetxController {
-  String city="cairo";
+  String city="assiut";
   HomeController({required this.city}) ;
   CurrentWeatherData currentWeatherData = CurrentWeatherData();
   List<FiveDaysData> fiveDayData = [];
@@ -22,7 +22,6 @@ class HomeController extends GetxController {
     } catch (e) {
       print('Error getting current position: $e');
     }
-    getTopFiveCities();
     super.onInit();
   }
 
@@ -33,6 +32,7 @@ class HomeController extends GetxController {
   void initState() {
     getFiveDaysData();
     getCurrentWeatherData();
+    getTopFiveCities();
   }
 
   void getCurrentWeatherData() {
@@ -59,11 +59,11 @@ class HomeController extends GetxController {
 
   void getTopFiveCities() {
     List<String> cities = [
-      'zagazig',
+      'assiut',
       'cairo',
       'alexandria',
-      'ismailia',
-      'fayoum'
+      'aswan',
+      'sinai'
     ];
     cities.forEach((element) {
       WeatherService(city: element).getCurrentWeatherData(

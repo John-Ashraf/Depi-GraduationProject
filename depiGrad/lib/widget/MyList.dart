@@ -7,7 +7,7 @@ class MyList extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 250,
       child: ListView.separated(
         physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
@@ -16,25 +16,25 @@ class MyList extends GetView<HomeController> {
         itemBuilder: (context, index) {
           CurrentWeatherData? data = controller.datalist[index];
           return Container(
-            width: 100,
+            width: 200,
             decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(10),
+              color: Colors.blue[50],
+              borderRadius: BorderRadius.circular(15),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
                   data.name ?? '',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                 ),
                 Text(
                   '${kelvinToCelsius(data.main?.temp ?? 273.15).round()}°C',
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 22),
                 ),
                 Text(
                   data.weather?.first.description ?? '',
-                  style: TextStyle(fontSize: 12),
+                  style: TextStyle(fontSize: 16),
                 ),
               ],
             ),

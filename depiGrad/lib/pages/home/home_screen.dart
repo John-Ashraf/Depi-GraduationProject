@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                     children: <Widget>[
                       SizedBox(height: 20),
                       Text(
-                        'OTHER CITY',
+                        'OTHER CITIES',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           fontSize: 16,
                           fontFamily: 'flutterfonts',
@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               SliverToBoxAdapter(
-                child: SizedBox(height: 100), // Adjust this value to move the forecast section down
+                child: SizedBox(height: 50), // Adjust this value to move the forecast section down
               ),
               SliverToBoxAdapter(
                 child: Padding(
